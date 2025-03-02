@@ -1,6 +1,4 @@
 import pandas as pd
-from webcolors import names
-
 
 class NATO:
     def __init__(self):
@@ -15,14 +13,12 @@ class NATO:
         nato_dict = {row.letter:row.code for index,row in self.df.iterrows()}
         return nato_dict
 
-
     def convert_to_nato(self, name:str):
         letter_list:list = [letter.upper() for letter in name]
-        # converted_name = [v for k,v in self.nato_dict.items() if [letter for letter in name_list if k == letter]]
         converted_name = [self.nato_dict[letter] for letter in letter_list]
         return converted_name
 
 if __name__ == "__main__":
     nato = NATO()
-    name = 'Angela'
+    name = input("Enter your name: ")
     print(nato.convert_to_nato(name=name))
