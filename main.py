@@ -15,10 +15,18 @@ class NATO:
 
     def convert_to_nato(self, name:str):
         letter_list:list = [letter.upper() for letter in name]
-        converted_name = [self.nato_dict[letter] for letter in letter_list]
-        return converted_name
+        try:
+            converted_name = [self.nato_dict[letter] for letter in letter_list]
+        except KeyError:
+            print("Sorry, only letters in the alphabet please.")
+        else:
+            return converted_name
 
 if __name__ == "__main__":
     nato = NATO()
-    name = input("Enter your name: ")
-    print(nato.convert_to_nato(name=name))
+    while True:
+        name = input("Enter your name: ")
+        output = nato.convert_to_nato(name=name)
+        if not output is None:
+            print(output)
+            break
